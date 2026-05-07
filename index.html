@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OASIS — Retreats for Women</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Dancing+Script:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #f5efe6;
+    --cream-warm: #ede4d3;
+    --paper: #faf6ee;
+    --sage: #4a5d3a;
+    --sage-deep: #2f3d24;
+    --sage-soft: #7c8a6a;
+    --earth: #6b3e1e;
+    --earth-mid: #8b5a32;
+    --earth-light: #b88860;
+    --ink: #2a2218;
+    --ink-soft: #5a4a3a;
+    --rule: rgba(107, 62, 30, 0.18);
+    --shadow: 0 30px 60px -20px rgba(74, 50, 20, 0.25);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Cormorant Garamond', serif;
+    background:var(--paper);
+    color:var(--ink);
+    font-size:18px;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* paper grain overlay */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(139,90,50,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(74,93,58,0.04) 0%, transparent 40%);
+    pointer-events:none;
+    z-index:1;
+  }
+
+  ::selection{ background:var(--earth); color:var(--cream); }
+
+  /* ====================== NAV ====================== */
+  nav{
+    position:fixed; top:0; left:0; right:0;
+    padding:22px 5vw;
+    display:flex; justify-content:space-between; align-items:center;
+    z-index:100;
+    background:rgba(250,246,238,0.85);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--rule);
+    transition:padding .3s ease;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    letter-spacing:0.32em;
+    font-size:14px;
+    color:var(--earth);
+    text-transform:uppercase;
+  }
+  .logo-mark{
+    width:34px; height:34px;
+    border:1.5px solid var(--earth);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    color:var(--earth);
+    font-size:18px;
+  }
+  .nav-links{
+    display:flex; gap:36px;
+    font-family:'Inter', sans-serif;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+  }
+  .nav-links a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    transition:color .3s;
+    position:relative;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:-6px;
+    width:0; height:1px; background:var(--earth);
+    transition:width .4s ease;
+  }
+  .nav-links a:hover{ color:var(--earth); }
+  .nav-links a:hover::after{ width:100%; }
+
+  @media (max-width:780px){
+    .nav-links{ display:none; }
+  }
+
+  /* ====================== HERO ====================== */
+  .hero{
+    min-height:100vh;
+    padding:140px 5vw 80px;
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:80px;
+    align-items:center;
+    position:relative;
+    background:
+      radial-gradient(ellipse at 0% 100%, rgba(74,93,58,0.08) 0%, transparent 50%),
+      linear-gradient(180deg, var(--paper) 0%, var(--cream) 100%);
+  }
+  .hero-text{ position:relative; z-index:2; }
+  .eyebrow{
+    font-family:'Inter', sans-serif;
+    font-size:11px;
+    letter-spacing:0.4em;
+    text-transform:uppercase;
+    color:var(--sage);
+    margin-bottom:28px;
+    display:flex; align-items:center; gap:14px;
+  }
+  .eyebrow::before{
+    content:""; width:36px; height:1px; background:var(--sage);
+  }
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:300;
+    font-size:clamp(54px, 8vw, 110px);
+    line-height:0.95;
+    color:var(--ink);
+    margin-bottom:24px;
+    letter-spacing:-0.02em;
+  }
+  .hero h1 .script{
+    font-family:'Dancing Script', cursive;
+    font-weight:600;
+    font-style:italic;
+    color:var(--sage);
+    display:block;
+    font-size:0.95em;
+    line-height:1;
+    margin-top:6px;
+    letter-spacing:0;
+  }
+  .hero-divider{
+    display:flex; align-items:center; gap:14px;
+    margin:32px 0;
+    font-family:'Inter', sans-serif;
+    font-size:11px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--earth);
+  }
+  .hero-divider span{ display:flex; align-items:center; gap:14px; }
+  .hero-divider .dot{
+    width:5px; height:5px; border-radius:50%; background:var(--earth);
+  }
+  .hero p.lead{
+    font-family:'Cormorant Garamond', serif;
+    font-size:21px;
+    line-height:1.65;
+    color:var(--ink-soft);
+    max-width:520px;
+    font-weight:400;
+  }
+  .hero p.lead em{
+    font-style:italic;
+    color:var(--sage-deep);
+  }
+  .hero-cta{
+    display:flex; gap:20px; margin-top:44px;
+    flex-wrap:wrap;
+  }
+
+  /* hero collage */
+  .hero-visual{
+    position:relative;
+    height:600px;
+  }
+  .hero-img{
+    position:absolute;
+    border-radius:50%;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    border:6px solid var(--paper);
+  }
+  .hero-img img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .hero-img.one{
+    width:280px; height:280px;
+    top:0; right:8%;
+  }
+  .hero-img.two{
+    width:240px; height:240px;
+    top:200px; left:0;
+  }
+  .hero-img.three{
+    width:300px; height:300px;
+    bottom:0; right:0;
+  }
+  /* decorative botanical */
+  .leaf-decor{
+    position:absolute;
+    color:var(--sage-soft);
+    opacity:.45;
+    pointer-events:none;
+  }
+  .leaf-decor.tl{ top:120px; left:-30px; transform:rotate(-15deg); }
+  .leaf-decor.br{ bottom:60px; right:-20px; transform:rotate(160deg); }
+
+  @media (max-width:980px){
+    .hero{
+      grid-template-columns:1fr;
+      padding-top:120px;
+      gap:60px;
+    }
+    .hero-visual{ height:500px; max-width:500px; margin:0 auto; width:100%; }
+    .hero-img.one{ width:220px; height:220px; }
+    .hero-img.two{ width:190px; height:190px; }
+    .hero-img.three{ width:240px; height:240px; }
+  }
+
+  /* ====================== BUTTONS ====================== */
+  .btn{
+    display:inline-flex; align-items:center; gap:14px;
+    padding:18px 36px;
+    font-family:'Inter', sans-serif;
+    font-size:11px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    font-weight:500;
+    text-decoration:none;
+    border-radius:100px;
+    transition:all .35s cubic-bezier(.2,.6,.2,1);
+    cursor:pointer;
+    border:none;
+  }
+  .btn-primary{
+    background:var(--earth);
+    color:var(--cream);
+  }
+  .btn-primary:hover{
+    background:var(--sage-deep);
+    transform:translateY(-2px);
+    box-shadow:0 12px 30px -10px rgba(107,62,30,0.5);
+  }
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--ink);
+  }
+  .btn-ghost:hover{
+    background:var(--ink);
+    color:var(--cream);
+  }
+  .btn .arrow{
+    display:inline-block;
+    transition:transform .3s;
+  }
+  .btn:hover .arrow{ transform:translateX(6px); }
+
+  /* ====================== INTRO STRIP ====================== */
+  .strip{
+    background:var(--sage-deep);
+    color:var(--cream);
+    padding:28px 5vw;
+    overflow:hidden;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:300;
+    font-size:20px;
+    letter-spacing:0.02em;
+    position:relative;
+    z-index:2;
+  }
+  .strip-track{
+    display:flex;
+    gap:80px;
+    white-space:nowrap;
+    animation:scroll 35s linear infinite;
+  }
+  .strip-track span{
+    display:flex; align-items:center; gap:80px;
+  }
+  .strip-track .sep{
+    color:var(--earth-light);
+    font-family:'Cormorant Garamond', serif;
+    font-style:normal;
+  }
+  @keyframes scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+
+  /* ====================== ABOUT ====================== */
+  .about{
+    padding:140px 5vw;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:100px;
+    align-items:center;
+    background:var(--paper);
+    position:relative;
+  }
+  .about-label{
+    font-family:'Inter', sans-serif;
+    font-size:11px;
+    letter-spacing:0.4em;
+    text-transform:uppercase;
+    color:var(--earth);
+    margin-bottom:28px;
+    display:flex; align-items:center; gap:14px;
+  }
+  .about-label::before{
+    content:""; width:36px; height:1px; background:var(--earth);
+  }
+  .about h2{
+    font-family:'Fraunces', serif;
+    font-weight:300;
+    font-size:clamp(42px, 5vw, 64px);
+    line-height:1.05;
+    color:var(--ink);
+    margin-bottom:36px;
+    letter-spacing:-0.01em;
+  }
+  .about h2 em{
+    font-family:'Dancing Script', cursive;
+    font-style:normal;
+    color:var(--sage);
+    font-weight:600;
+  }
+  .about p{
+    font-size:19px;
+    line-height:1.75;
+    color:var(--ink-soft);
+    margin-bottom:24px;
+  }
+  .about-quote{
+    margin-top:40px;
+    padding:30px 36px;
+    border-left:2px solid var(--earth);
+    background:var(--cream-warm);
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:18px;
+    line-height:1.65;
+    color:var(--sage-deep);
+  }
+  .about-quote cite{
+    display:block;
+    margin-top:12px;
+    font-style:normal;
+    font-family:'Inter', sans-serif;
+    font-size:11px;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--earth);
+  }
+  .about-visual{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .about-visual img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .about-visual::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 60%, rgba(42,34,24,0.25) 100%);
+  }
+  .about-badge{
+    position:absolute;
+    bottom:-30px; left:-30px;
+    width:140px; height:140px;
+    border-radius:50%;
+    background:var(--earth);
+    color:var(--cream);
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:14px;
+    line-height:1.3;
+    padding:18px;
+    box-shadow:var(--shadow);
+  }
+  @media (max-width:980px){
+    .about{ grid-template-columns:1fr; gap:60px; padding:90px 5vw; }
+    .about-badge{ width:110px; height:110px; font-size:12px; bottom:-20px; left:20px; }
+  }
+
+  /* ====================== RETREATS HEADING ====================== */
+  .retreats-intro{
+    text-align:center;
+    padding:120px 5vw 60px;
+    background:linear-gradient(180deg, var(--paper) 0%, var(--cream) 100%);
+  }
+  .retreats-intro .eyebrow{
+    justify-content:center;
+  }
+  .retreats-intro .eyebrow::after{
+    content:""; width:36px; height:1px; background:var(--sage);
+  }
+  .retreats-intro h2{
+    font-family:'Fraunces', serif;
+    font-weight:300;
+    font-size:clamp(44px, 6vw, 78px);
+    line-height:1.05;
+    color:var(--ink);
+    max-width:900px;
+    margin:0 auto 24px;
+    letter-spacing:-0.01em;
+  }
+  .retreats-intro h2 em{
+    font-family:'Dancing Script', cursive;
+    font-style:normal;
+    color:var(--earth);
+    font-weight:600;
+  }
+  .retreats-intro p{
+    max-width:640px;
+    margin:0 auto;
+    font-size:19px;
+    line-height:1.7;
+    color:var(--ink-soft);
+  }
+
+  /* ====================== RETREAT CARD ====================== */
+  .retreat{
+    padding:60px 5vw 120px;
+    background:var(--cream);
+  }
+  .retreat:nth-of-type(odd-bg){ background:var(--paper); }
+  .retreat-card{
+    max-width:1280px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    gap:80px;
+    align-items:start;
+    position:relative;
+  }
+  .retreat-card.flipped{
+    grid-template-columns:1.1fr 1fr;
+  }
+  .retreat-card.flipped .retreat-visual{ order:2; }
+
+  .retreat-tag{
+    display:inline-flex; align-items:center; gap:12px;
+    padding:8px 18px;
+    background:var(--earth);
+    color:var(--cream);
+    border-radius:100px;
+    font-family:'Inter', sans-serif;
+    font-size:10px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    margin-bottom:24px;
+  }
+  .retreat-tag.sage{ background:var(--sage-deep); }
+
+  .retreat h3{
+    font-family:'Fraunces', serif;
+    font-weight:300;
+    font-size:clamp(42px, 5.5vw, 72px);
+    line-height:1;
+    color:var(--ink);
+    margin-bottom:14px;
+    letter-spacing:-0.02em;
+  }
+  .retreat h3 em{
+    font-family:'Dancing Script', cursive;
+    font-style:normal;
+    font-weight:600;
+    color:var(--earth);
+    display:block;
+    font-size:0.85em;
+    margin-top:4px;
+  }
+  .retreat .subtitle{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:22px;
+    color:var(--sage);
+    margin-bottom:28px;
+    font-weight:300;
+  }
+  .retreat .desc{
+    font-size:18px;
+    line-height:1.7;
+    color:var(--ink-soft);
+    margin-bottom:24px;
+  }
+  .retreat .desc strong{
+    color:var(--sage-deep);
+    font-weight:500;
+  }
+
+  .retreat-meta{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin:36px 0;
+    padding:24px 0;
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+  }
+  .meta-item{
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .meta-item .label{
+    font-family:'Inter', sans-serif;
+    font-size:10px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--earth);
+  }
+  .meta-item .val{
+    font-family:'Fraunces', serif;
+    font-size:17px;
+    color:var(--ink);
+    font-weight:400;
+  }
+
+  .retreat-list{
+    list-style:none;
+    margin:24px 0 32px;
+  }
+  .retreat-list li{
+    padding:10px 0 10px 32px;
+    position:relative;
+    font-size:17px;
+    color:var(--ink-soft);
+    border-bottom:1px dashed var(--rule);
+  }
+  .retreat-list li:last-child{ border-bottom:none; }
+  .retreat-list li::before{
+    content:"";
+    position:absolute; left:0; top:18px;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:var(--earth);
+    box-shadow:inset 0 0 0 3px var(--cream);
+  }
+  .retreat.theme-sage .retreat-list li::before{
+    background:var(--sage);
+  }
+
+  .pricing{
+    background:var(--paper);
+    padding:30px 32px;
+    border-radius:8px;
+    margin:32px 0;
+    border:1px solid var(--rule);
+  }
+  .retreat.theme-sage .pricing{ background:var(--cream-warm); }
+  .pricing-title{
+    font-family:'Inter', sans-serif;
+    font-size:11px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--earth);
+    margin-bottom:18px;
+  }
+  .price-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:10px 0;
+    border-bottom:1px dashed var(--rule);
+    gap:20px;
+  }
+  .price-row:last-of-type{ border-bottom:none; }
+  .price-row .label{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:16px;
+    color:var(--ink-soft);
+  }
+  .price-row .amount{
+    font-family:'Fraunces', serif;
+    font-size:24px;
+    color:var(--earth);
+    font-weight:500;
+    white-space:nowrap;
+  }
+  .pricing-note{
+    margin-top:14px;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:14px;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+
+  /* retreat visual */
+  .retreat-visual{
+    position:sticky;
+    top:120px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto;
+    gap:14px;
+  }
+  .rv-img{
+    overflow:hidden;
+    border-radius:6px;
+    box-shadow:var(--shadow);
+  }
+  .rv-img img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .8s ease; }
+  .rv-img:hover img{ transform:scale(1.05); }
+  .rv-tall{
+    grid-row:1 / 3;
+    aspect-ratio:3/5;
+  }
+  .rv-square{ aspect-ratio:1/1; }
+  .rv-wide{ aspect-ratio:1/1; }
+
+  .retreat-stamp{
+    position:absolute;
+    top:-30px; right:-20px;
+    width:130px; height:130px;
+    border-radius:50%;
+    background:var(--sage-deep);
+    color:var(--cream);
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:13px;
+    line-height:1.3;
+    padding:14px;
+    transform:rotate(8deg);
+    z-index:5;
+    box-shadow:var(--shadow);
+  }
+  .retreat.theme-earth .retreat-stamp{
+    background:var(--earth);
+  }
+
+  @media (max-width:980px){
+    .retreat-card,
+    .retreat-card.flipped{
+      grid-template-columns:1fr;
+      gap:50px;
+    }
+    .retreat-card.flipped .retreat-visual{ order:0; }
+    .retreat-visual{ position:relative; top:0; }
+    .retreat-stamp{
+      width:100px; height:100px; font-size:11px;
+      top:-15px; right:10px;
+    }
+  }
+
+  /* divider with botanical */
+  .botanical-divider{
+    display:flex; align-items:center; justify-content:center;
+    gap:24px;
+    padding:60px 5vw;
+    background:var(--cream);
+  }
+  .botanical-divider .line{
+    flex:1; max-width:200px;
+    height:1px; background:var(--rule);
+  }
+  .botanical-divider svg{
+    color:var(--sage);
+    opacity:.7;
+  }
+
+  /* ====================== FOOTER CTA ====================== */
+  .closing{
+    padding:140px 5vw;
+    text-align:center;
+    background:
+      radial-gradient(ellipse at 50% 100%, rgba(74,93,58,0.15) 0%, transparent 60%),
+      var(--sage-deep);
+    color:var(--cream);
+    position:relative;
+    overflow:hidden;
+  }
+  .closing::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(184,136,96,0.08) 0%, transparent 30%),
+      radial-gradient(circle at 85% 75%, rgba(184,136,96,0.06) 0%, transparent 35%);
+    pointer-events:none;
+  }
+  .closing-content{ position:relative; z-index:2; max-width:780px; margin:0 auto; }
+  .closing .eyebrow{
+    color:var(--earth-light);
+    justify-content:center;
+  }
+  .closing .eyebrow::before{ background:var(--earth-light); }
+  .closing .eyebrow::after{
+    content:""; width:36px; height:1px; background:var(--earth-light);
+  }
+  .closing h2{
+    font-family:'Fraunces', serif;
+    font-weight:300;
+    font-size:clamp(48px, 7vw, 90px);
+    line-height:1.05;
+    margin-bottom:28px;
+    letter-spacing:-0.01em;
+  }
+  .closing h2 em{
+    font-family:'Dancing Script', cursive;
+    font-style:normal;
+    color:var(--earth-light);
+    font-weight:600;
+  }
+  .closing p{
+    font-size:20px;
+    line-height:1.7;
+    color:rgba(245,239,230,0.8);
+    margin-bottom:40px;
+    max-width:560px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .closing .btn-primary{
+    background:var(--earth-light);
+    color:var(--sage-deep);
+  }
+  .closing .btn-primary:hover{
+    background:var(--cream);
+  }
+
+  /* ====================== FOOTER ====================== */
+  footer{
+    background:var(--ink);
+    color:rgba(245,239,230,0.7);
+    padding:60px 5vw 40px;
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+  }
+  .footer-grid{
+    max-width:1280px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:60px;
+    padding-bottom:40px;
+    border-bottom:1px solid rgba(245,239,230,0.15);
+  }
+  .footer-brand .logo{ color:var(--cream); margin-bottom:16px; }
+  .footer-brand .logo-mark{ border-color:var(--cream); color:var(--cream); }
+  .footer-brand p{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:17px;
+    line-height:1.6;
+    max-width:380px;
+    color:rgba(245,239,230,0.6);
+  }
+  .footer-col h4{
+    font-size:11px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--cream);
+    margin-bottom:18px;
+    font-weight:500;
+  }
+  .footer-col a, .footer-col p{
+    display:block;
+    color:rgba(245,239,230,0.65);
+    text-decoration:none;
+    margin-bottom:10px;
+    transition:color .3s;
+  }
+  .footer-col a:hover{ color:var(--earth-light); }
+  .copyright{
+    max-width:1280px;
+    margin:30px auto 0;
+    display:flex; justify-content:space-between;
+    flex-wrap:wrap; gap:14px;
+    color:rgba(245,239,230,0.4);
+    font-size:12px;
+  }
+  @media (max-width:780px){
+    .footer-grid{ grid-template-columns:1fr; gap:40px; }
+  }
+
+  /* fade-in on load */
+  .fade-up{
+    opacity:0;
+    transform:translateY(24px);
+    animation:fadeUp 1s cubic-bezier(.2,.6,.2,1) forwards;
+  }
+  .fade-up.d1{ animation-delay:.1s; }
+  .fade-up.d2{ animation-delay:.25s; }
+  .fade-up.d3{ animation-delay:.4s; }
+  .fade-up.d4{ animation-delay:.55s; }
+  .fade-up.d5{ animation-delay:.7s; }
+  @keyframes fadeUp{
+    to{ opacity:1; transform:translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <a href="#" class="logo">
+    <span class="logo-mark"><em>A</em></span>
+    OASIS
+  </a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#reset">The Reset</a>
+    <a href="#holistic">Holistic</a>
+    <a href="#book">Book</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <!-- decorative leaf SVGs -->
+  <svg class="leaf-decor tl" width="120" height="180" viewBox="0 0 120 180" fill="none">
+    <path d="M60 10 Q20 50 30 100 Q40 150 60 170 Q80 150 90 100 Q100 50 60 10 Z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+    <path d="M60 20 L60 165" stroke="currentColor" stroke-width="0.8"/>
+    <path d="M60 50 Q40 55 35 70 M60 80 Q40 85 33 100 M60 110 Q40 115 36 130" stroke="currentColor" stroke-width="0.6" fill="none"/>
+    <path d="M60 50 Q80 55 85 70 M60 80 Q80 85 87 100 M60 110 Q80 115 84 130" stroke="currentColor" stroke-width="0.6" fill="none"/>
+  </svg>
+
+  <div class="hero-text">
+    <div class="eyebrow fade-up d1">A sanctuary for women · Est. 2026</div>
+    <h1 class="fade-up d2">
+      Step away.
+      <span class="script">Breathe again.</span>
+    </h1>
+    <div class="hero-divider fade-up d3">
+      <span>Rest</span><span class="dot"></span>
+      <span>Recharge</span><span class="dot"></span>
+      <span>Release</span>
+    </div>
+    <p class="lead fade-up d4">
+      OASIS hosts small, intentional retreats in the English countryside for women who need
+      a proper pause. <em>No pressure. No expectations.</em> Just space to come home to yourself.
+    </p>
+    <div class="hero-cta fade-up d5">
+      <a href="#reset" class="btn btn-primary">
+        Explore Retreats <span class="arrow">→</span>
+      </a>
+      <a href="#about" class="btn btn-ghost">Our story</a>
+    </div>
+  </div>
+
+  <div class="hero-visual fade-up d3">
+    <div class="hero-img one">
+      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80" alt="Spa" />
+    </div>
+    <div class="hero-img two">
+      <img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?w=600&q=80" alt="Retreat cabin in nature" />
+    </div>
+    <div class="hero-img three">
+      <img src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?w=600&q=80" alt="Women smiling together" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE STRIP ============ -->
+<div class="strip">
+  <div class="strip-track">
+    <span>
+      Restore <span class="sep">✦</span>
+      Renew <span class="sep">✦</span>
+      Reset <span class="sep">✦</span>
+      A space to exhale <span class="sep">✦</span>
+      Sisterhood &amp; stillness <span class="sep">✦</span>
+      Spirit, soul &amp; body <span class="sep">✦</span>
+    </span>
+    <span aria-hidden="true">
+      Restore <span class="sep">✦</span>
+      Renew <span class="sep">✦</span>
+      Reset <span class="sep">✦</span>
+      A space to exhale <span class="sep">✦</span>
+      Sisterhood &amp; stillness <span class="sep">✦</span>
+      Spirit, soul &amp; body <span class="sep">✦</span>
+    </span>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div>
+    <div class="about-label">Welcome to OASIS</div>
+    <h2>A small, calm space <em>just for you.</em></h2>
+    <p>
+      If life has felt loud lately — this is your pause. OASIS was created for the women who
+      hold everything together: the ones who are tired of being "fine", the ones who haven't
+      had a moment to themselves in months, the ones quietly running on empty.
+    </p>
+    <p>
+      We host intimate weekend retreats in the English countryside. Two nights of slow mornings,
+      heart-opening conversations, nature walks and wellness — held in beautiful estates with
+      spas, pools and acres of landscaped gardens.
+    </p>
+    <div class="about-quote">
+      "Most people wait until they're completely exhausted before they stop.
+      You don't have to get to that point."
+      <cite>— A note from your host</cite>
+    </div>
+  </div>
+  <div class="about-visual">
+    <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=900&q=80" alt="Woman resting peacefully" />
+    <div class="about-badge">
+      Limited<br>spaces<br><em>by design</em>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIVIDER ============ -->
+<div class="botanical-divider">
+  <div class="line"></div>
+  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+    <path d="M20 4 Q8 18 12 28 Q16 36 20 36 Q24 36 28 28 Q32 18 20 4 Z" stroke="currentColor" stroke-width="1" fill="none"/>
+    <path d="M20 8 L20 34" stroke="currentColor" stroke-width="0.8"/>
+    <circle cx="20" cy="20" r="1.5" fill="currentColor"/>
+  </svg>
+  <div class="line"></div>
+</div>
+
+<!-- ============ RETREATS INTRO ============ -->
+<section class="retreats-intro">
+  <div class="eyebrow">Two retreats · 2026</div>
+  <h2>Choose your <em>oasis</em>.</h2>
+  <p>
+    Two carefully curated weekends, each with its own rhythm. One for the everyday woman.
+    One for women in ministry. Both designed to help you breathe.
+  </p>
+</section>
+
+<!-- ============ RETREAT 1: THE RESET ============ -->
+<section class="retreat theme-earth" id="reset">
+  <div class="retreat-card">
+    <div>
+      <span class="retreat-tag">The Reset Retreat · Sept 2026</span>
+      <h3>The Reset <em>Retreat</em></h3>
+      <p class="subtitle">For women in need of a break.</p>
+      <p class="desc">
+        A quiet weekend in the Berkshire countryside for women who are stressed, overwhelmed,
+        too busy or simply exhausted. The venue sits within <strong>250 acres of landscaped gardens</strong>,
+        with a swimming pool, sauna, gym and nine lakes. Slow mornings, fun group discussions,
+        long walks and early nights — all completely optional.
+      </p>
+
+      <div class="retreat-meta">
+        <div class="meta-item">
+          <span class="label">When</span>
+          <span class="val">11 – 13 September 2026</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Where</span>
+          <span class="val">De Vere Wokefield Estate, Reading</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Duration</span>
+          <span class="val">2 nights · Check-in 4pm</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">For</span>
+          <span class="val">Women needing "me time"</span>
+        </div>
+      </div>
+
+      <ul class="retreat-list">
+        <li>En-suite single or double rooms · free WiFi</li>
+        <li>Breakfast, lunch &amp; dinner · unlimited tea &amp; coffee</li>
+        <li>Free use of sauna, pool, gym &amp; tennis courts</li>
+        <li>Walks across the beautiful grounds &amp; lakes</li>
+        <li>Journaling, creative reflection &amp; fun activities</li>
+        <li>Plenty of free time — everything is optional</li>
+      </ul>
+
+      <div class="pricing">
+        <div class="pricing-title">Investment</div>
+        <div class="price-row">
+          <span class="label">Single occupancy · 2 nights</span>
+          <span class="amount">£350</span>
+        </div>
+        <div class="price-row">
+          <span class="label">Double / twin sharing · per person</span>
+          <span class="amount">£285</span>
+        </div>
+        <p class="pricing-note">
+          A £100 non-refundable deposit secures your place. Balance payable by Friday 26th July 2026.
+          Places allocated on a first-come basis.
+        </p>
+      </div>
+
+      <a href="#book" class="btn btn-primary">
+        Reserve your spot <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <div class="retreat-visual">
+      <div class="retreat-stamp">
+        Restore<br>Renew<br><em>Reset</em>
+      </div>
+      <div class="rv-img rv-tall">
+        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80" alt="Peaceful spa setting" />
+      </div>
+      <div class="rv-img rv-square">
+        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80" alt="Lake at countryside estate" />
+      </div>
+      <div class="rv-img rv-wide">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80" alt="Pool at retreat" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIVIDER ============ -->
+<div class="botanical-divider" style="background:var(--cream);">
+  <div class="line"></div>
+  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+    <path d="M20 4 Q8 18 12 28 Q16 36 20 36 Q24 36 28 28 Q32 18 20 4 Z" stroke="currentColor" stroke-width="1" fill="none"/>
+    <path d="M20 8 L20 34" stroke="currentColor" stroke-width="0.8"/>
+    <circle cx="20" cy="20" r="1.5" fill="currentColor"/>
+  </svg>
+  <div class="line"></div>
+</div>
+
+<!-- ============ RETREAT 2: HOLISTIC ============ -->
+<section class="retreat theme-sage" id="holistic" style="background:var(--paper);">
+  <div class="retreat-card flipped">
+    <div class="retreat-visual">
+      <div class="retreat-stamp" style="background:var(--sage-deep);">
+        For women<br>in <em>ministry</em>
+      </div>
+      <div class="rv-img rv-tall">
+        <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800&q=80" alt="Quiet reflection space" />
+      </div>
+      <div class="rv-img rv-square">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600&q=80" alt="Garden grounds" />
+      </div>
+      <div class="rv-img rv-wide">
+        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80" alt="Tea and rest" />
+      </div>
+    </div>
+
+    <div>
+      <span class="retreat-tag sage">Holistic Retreat · Aug 2026</span>
+      <h3>Holistic <em>Retreat</em></h3>
+      <p class="subtitle">For women in ministry.</p>
+      <p class="desc">
+        Are you the one who keeps everything going? The one people rely on, pushing through
+        even when you're exhausted? <strong>You don't have to wait until you're empty to stop.</strong>
+        A quiet weekend in Chesham for female pastors, pastors' wives and ministry leaders —
+        a place to exhale, sit at His feet, and receive rest, encouragement &amp; spiritual renewal.
+      </p>
+      <div class="about-quote" style="margin:24px 0;">
+        "Martha, Martha, you are worried and troubled about many things.
+        But only one thing is needed."
+        <cite>— Luke 10:41-42</cite>
+      </div>
+
+      <div class="retreat-meta">
+        <div class="meta-item">
+          <span class="label">When</span>
+          <span class="val">14 – 16 August 2026</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Where</span>
+          <span class="val">De Vere Latimer Estate, Chesham</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Duration</span>
+          <span class="val">2 nights · away on a Sunday</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">For</span>
+          <span class="val">Pastors, wives, women leaders</span>
+        </div>
+      </div>
+
+      <ul class="retreat-list">
+        <li>Single en-suite double-bed rooms · free WiFi</li>
+        <li>Nutritious meals &amp; unlimited teas &amp; coffees</li>
+        <li>Free use of sauna, pool, gym &amp; tennis courts</li>
+        <li>Walks &amp; quiet time across the grounds</li>
+        <li>Pastoral care, journaling &amp; creative reflection</li>
+        <li>A luxury <em>Cherished Collections</em> gift bag to take home</li>
+      </ul>
+
+      <div class="pricing">
+        <div class="pricing-title">Investment</div>
+        <div class="price-row">
+          <span class="label">Single occupancy · 2 nights</span>
+          <span class="amount">£380</span>
+        </div>
+        <p class="pricing-note">
+          A £150 non-refundable deposit secures your place. Balance payable by Friday 10th July 2026.
+          Places allocated on a first-come basis.
+        </p>
+      </div>
+
+      <a href="#book" class="btn btn-primary">
+        Reserve your spot <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA ============ -->
+<section class="closing" id="book">
+  <div class="closing-content">
+    <div class="eyebrow">Ready to join us?</div>
+    <h2>Your <em>weekend away</em><br>begins here.</h2>
+    <p>
+      Spaces are intentionally limited. Register your interest today and we'll send through
+      everything you need to secure your place.
+    </p>
+    <a href="mailto:atinuke.omisade@gmail.com?subject=RETREAT" class="btn btn-primary">
+      Register your interest <span class="arrow">→</span>
+    </a>
+    <p style="margin-top:36px; font-style:italic; font-size:17px; color:rgba(245,239,230,0.7);">
+      E-mail the word <strong style="color:var(--earth-light);">RETREAT</strong> to
+      <a href="mailto:atinuke.omisade@gmail.com" style="color:var(--cream); text-decoration:underline; text-decoration-color:var(--earth-light); text-underline-offset:4px;">atinuke.omisade@gmail.com</a>
+    </p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <span class="logo-mark"><em>A</em></span>
+        OASIS
+      </a>
+      <p>A sanctuary for women — quiet weekends in the English countryside, designed for rest, reflection &amp; renewal.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Retreats</h4>
+      <a href="#reset">The Reset Retreat</a>
+      <a href="#holistic">Holistic Retreat</a>
+      <a href="#about">About OASIS</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in touch</h4>
+      <a href="mailto:atinuke.omisade@gmail.com">atinuke.omisade@gmail.com</a>
+      <p>www.atinukeomisade.com/retreat</p>
+    </div>
+  </div>
+  <div class="copyright">
+    <span>© 2026 OASIS. A space to exhale.</span>
+    <span>Restore · Renew · Reset</span>
+  </div>
+</footer>
+
+</body>
+</html>
