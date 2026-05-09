@@ -10,6 +10,10 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Dancing+Script:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
     <style>
       :root {
         --cream: #f5efe6;
@@ -1602,18 +1606,30 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
+        // ================================
+        // EMAILJS INIT
+        // ================================
+        emailjs.init('ZRDnNLVjRFRJa9cf3');
+
+        // ================================
+        // ELEMENTS
+        // ================================
         const registerBtn = document.getElementById('registerBtn');
         const modalOverlay = document.getElementById('modalOverlay');
         const closeModal = document.getElementById('closeModal');
         const registrationForm = document.getElementById('registrationForm');
 
-        // Open modal
+        // ================================
+        // OPEN MODAL
+        // ================================
         registerBtn.addEventListener('click', () => {
           modalOverlay.classList.add('active');
           document.body.style.overflow = 'hidden';
         });
 
-        // Close modal
+        // ================================
+        // CLOSE MODAL
+        // ================================
         const handleClose = () => {
           modalOverlay.classList.remove('active');
           document.body.style.overflow = '';
@@ -1621,47 +1637,85 @@
 
         closeModal.addEventListener('click', handleClose);
 
-        // Close when clicking outside modal
+        // Close when clicking outside
         modalOverlay.addEventListener('click', (e) => {
           if (e.target === modalOverlay) {
             handleClose();
           }
         });
 
-        // Handle form submission
-        registrationForm.addEventListener('submit', (e) => {
+        // ================================
+        // FORM SUBMISSION
+        // ================================
+        registrationForm.addEventListener('submit', async (e) => {
           e.preventDefault();
 
-          const formData = new FormData(registrationForm);
-          const data = Object.fromEntries(formData.entries());
+          const submitBtn = registrationForm.querySelector(
+            'button[type="submit"]'
+          );
 
-          console.log('Registration Data:', data);
-
-          // Clear form
-          registrationForm.reset();
-
-          // Show success message
           const header = document.querySelector('.modal-header');
 
-          header.innerHTML = `
-        <h3>Thank <em>you</em></h3>
-        <p>We've received your details and will be in touch shortly.</p>
-      `;
+          // Loading state
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = 'Sending...';
 
-          registrationForm.style.display = 'none';
+          // Form data
+          const formData = new FormData(registrationForm);
 
-          // Auto close after 3 sec
-          setTimeout(() => {
-            handleClose();
+          const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+          };
 
-            // Restore form when reopened
-            registrationForm.style.display = 'block';
+          try {
+            // ================================
+            // SEND EMAIL
+            // ================================
+            await emailjs.send('service_guuyjli', 'template_dji75km', data);
+
+            // ================================
+            // SUCCESS UI
+            // ================================
+            registrationForm.reset();
 
             header.innerHTML = `
-          <h3>Register <em>Now</em></h3>
-          <p>Fill in your details below.</p>
+          <h3>Thank <em>you</em></h3>
+          <p>We've received your details and will be in touch shortly.</p>
         `;
-          }, 3000);
+
+            registrationForm.style.display = 'none';
+
+            // Auto close after 3 seconds
+            setTimeout(() => {
+              handleClose();
+
+              // Restore modal state
+              registrationForm.style.display = 'block';
+
+              header.innerHTML = `
+            <h3>Register your <em>interest</em></h3>
+            <p>Fill in your details and we'll be in touch soon.</p>
+          `;
+
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = `
+            Send Details <span class="arrow">→</span>
+          `;
+            }, 3000);
+          } catch (error) {
+            console.error('EmailJS Error:', error);
+
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = `
+          Send Details <span class="arrow">→</span>
+        `;
+
+            alert(
+              'Something went wrong while sending your details. Please try again.'
+            );
+          }
         });
       });
     </script>
