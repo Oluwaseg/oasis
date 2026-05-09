@@ -751,6 +751,7 @@
         margin-top: 14px;
         font-family: 'Cormorant Garamond', serif;
         font-style: italic;
+        font-weight: bold;
         font-size: 14px;
         color: var(--ink-soft);
         line-height: 1.5;
@@ -1337,11 +1338,13 @@
             </div>
             <div class="meta-item">
               <span class="label">Duration</span>
-              <span class="val">2 nights · away on a Sunday</span>
+              <span class="val">Friday – Sunday</span>
             </div>
             <div class="meta-item">
               <span class="label">For</span>
-              <span class="val">Pastors, wives, women leaders</span>
+              <span class="val"
+                >Pastors wives, Women leaders, Ministry leaders</span
+              >
             </div>
           </div>
 
@@ -1368,12 +1371,9 @@
             </p>
           </div>
 
-          <a
-            href="https://buy.stripe.com/eVq6oH4B0gRka2NcK25AQ03"
-            class="btn btn-primary"
-          >
-            Reserve your spot <span class="arrow">→</span>
-          </a>
+          <button type="button" class="btn btn-primary open-modal">
+            Register your interest <span class="arrow">→</span>
+          </button>
         </div>
       </div>
     </section>
@@ -1453,12 +1453,9 @@
             </p>
           </div>
 
-          <a
-            href="https://buy.stripe.com/dRm14n1oO7gK4It11k5AQ0"
-            class="btn btn-primary"
-          >
-            Reserve your spot <span class="arrow">→</span>
-          </a>
+          <button type="button" class="btn btn-primary open-modal">
+            Register your interest <span class="arrow">→</span>
+          </button>
         </div>
 
         <div class="retreat-visual">
@@ -1622,10 +1619,17 @@
         // ================================
         // OPEN MODAL
         // ================================
-        registerBtn.addEventListener('click', () => {
+        const openModalBtns = document.querySelectorAll('.open-modal');
+
+        const openModal = () => {
           modalOverlay.classList.add('active');
           document.body.style.overflow = 'hidden';
-        });
+        };
+
+        registerBtn.addEventListener('click', openModal);
+        openModalBtns.forEach((btn) =>
+          btn.addEventListener('click', openModal)
+        );
 
         // ================================
         // CLOSE MODAL
